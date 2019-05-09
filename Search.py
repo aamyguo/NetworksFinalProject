@@ -1,6 +1,7 @@
 #pip install beautifulsoup4
 #pip install google
 #pip install selenium
+#pip install requests
 
 from requests import get
 from bs4 import BeautifulSoup
