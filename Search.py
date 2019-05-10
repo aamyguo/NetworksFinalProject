@@ -3,9 +3,10 @@
 #pip install selenium
 #pip install requests
 
-from requests import get
+#from requests import get
 from bs4 import BeautifulSoup
 import webbrowser
+from urllib.request import urlopen
 #from selenium import webdriver
 #import selenium
 #from time import sleep
@@ -13,8 +14,10 @@ import webbrowser
 class Search():
 	def Trending():
 		url = "https://trends.google.com/trends/trendingsearches/daily/rss?geo=US"
-		response = get(url)
-		html_soup = BeautifulSoup(response.text, 'html.parser')
+		#response = get(url)
+        html = urlopen(url)
+		#html_soup = BeautifulSoup(response.text, 'html.parser')
+        html_soup = BeautifulSoup(html.read())
 		arr = []
 		trend_containers = html_soup.find_all('title')
 		for i in range(1,len(trend_containers)):
@@ -40,5 +43,3 @@ for i in range(0,len(tren)):
 		#driver.get(j)
 		#sleep(2)
 		#driver.close()
-		
-	
